@@ -63,7 +63,7 @@ def photo_list(request):
             print('result =', result)
             
             if(result == None):                       
-                messages.info(request, 'Image is to small!')
+                messages.info(request, 'Image is too small!')
             else:               
                 result_photos = ResultPhoto.objects.all()
                 print(ResultPhoto.objects.all().count())
