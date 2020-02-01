@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %} 
+
+{% block content %}
+  <h1 class="page-header">Album</h1>
+
+  <!-- CONTAINER TO DISPLAY THE CROPPED IMAGES -->
+  {% if photos %}
+  <div class="row" style="margin-top: 20px">
+    {% for photo in photos %}
+      <div class="col-sm-4 col-md-3">
+        <img src="{{ photo.file.url }}" class="thumbnail">		
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  <div class="row" style="margin-top: 20px">>
+    {% for result_photo in result_photos %}   
+	<div class="col-sm-4 col-md-3">
+		<img src ="{% static 'dataset/' %}{{result_photo.index}}.jpg"  class="thumbnail">
+		<h3> Rank {{forloop.counter}} </h3>
+	</div>
+		{% endfor %}
+  </div>
+  
+  {% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+		<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+
+{% endblock %}
+
