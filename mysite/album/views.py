@@ -37,16 +37,14 @@ def retrieval_k(img, k):
     print(dist)
     print(ind)
     ind = list(itertools.chain.from_iterable(ind))
-    return ind
 
-    '''# display the query
-    imageQuery = cv2.imread(img)
-
+    k_image = []
     # loop over the results
     for i in ind:
         # load the result image and display it
-        result = cv2.imread(imageID[i])
-        print("LALALA = ", result)'''
+        k_image.append(imageID[i])
+        
+    return k_image
 
 def photo_list(request):
     photos = Photo.objects.all()   

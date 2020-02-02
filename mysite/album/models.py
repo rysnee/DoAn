@@ -11,7 +11,7 @@ class Photo(models.Model):
         verbose_name_plural = 'photos'
 
 class ResultPhoto(models.Model):
-    index = models.IntegerField()
+    index = models.CharField(max_length=255, blank=True)
 
     class Meta:
         verbose_name = 'result_photo'

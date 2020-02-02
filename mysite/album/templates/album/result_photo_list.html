@@ -19,7 +19,7 @@
   <div class="row" style="margin-top: 20px">>
     {% for result_photo in result_photos %}   
 	<div class="col-sm-4 col-md-3">
-		<img src ="{% static 'dataset/' %}{{result_photo.index}}.jpg"  class="thumbnail">
+		<img src ="{% static '/' %}{{result_photo.index}}"  class="thumbnail">
 		<h3> Rank {{forloop.counter}} </h3>
 	</div>
 		{% endfor %}
