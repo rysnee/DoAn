@@ -10,10 +10,15 @@ pip install Django==3.0.2
 pip install pillow
 ```
 
+## Download Oxford Building database and extract to 'CBIR/mysite/static/dataset/'
+
+```bash
+http://www.robots.ox.ac.uk/~vgg/data/oxbuildings/
+```
 
 ## Running Locally
 
-Move to folder and run 2 commands:
+Move to folder 'CBIR/' and run 2 commands:
 
 ```bash
 python manage.py migrate
