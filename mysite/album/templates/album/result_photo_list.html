@@ -8,21 +8,30 @@
   <!-- CONTAINER TO DISPLAY THE CROPPED IMAGES -->
   {% if photos %}
   <div class="row" style="margin-top: 20px">
-    {% for photo in photos %}
-      <div class="col-sm-4 col-md-3">
-        <img src="{{ photo.file.url }}" class="thumbnail">		
-      </div>
-    {% endfor %}
+	<center>
+		{% for photo in photos %}
+		  <div class="column">
+			<center>
+				<h3> Query Image </h3>	
+				<img src="{{ photo.file.url }}" class="thumbnail" style="max-height:500px;max-width:500px;width: expression(this.width > 500 ? 500: true);height: expression(this.height > 500 ? 500: true);">					
+			</center>
+		  </div>
+		{% endfor %}
+	</center>
   </div>
   {% endif %}
   
   <div class="row" style="margin-top: 20px">>
+	<center>
     {% for result_photo in result_photos %}   
-	<div class="col-sm-4 col-md-3">
-		<img src ="{% static '/' %}{{result_photo.index}}"  class="thumbnail">
-		<h3> Rank {{forloop.counter}} </h3>
+	<div class="col-sm-6 col-sm-6">
+		<h3 style="margin-top: 70px"> Rank {{forloop.counter}} </h3>
+		<h3> L2 Score: {{result_photo.score}} </h3>	
+		<img src ="{% static '/' %}{{result_photo.index}}"  class="thumbnail"
+		style="max-height:500px;max-width:500px;width: expression(this.width > 500 ? 500: true);height: expression(this.height > 500 ? 500: true);">			
 	</div>
 		{% endfor %}
+	</center>
   </div>
   
   {% if messages %}

@@ -30,13 +30,14 @@ def retrieval_k(img, k):
 
     # computing descriptors
     dist, ind = query(img, k, descriptorName, visualDictionary, tree)
-
+    dist = dist.flatten()
+    ind = ind.flatten()
     if dist is 0:
         return
 
     print(dist)
     print(ind)
-    ind = list(itertools.chain.from_iterable(ind))
+    #ind = list(itertools.chain.from_iterable(ind))
 
     k_image = []
     # loop over the results
@@ -44,7 +45,7 @@ def retrieval_k(img, k):
         # load the result image and display it
         k_image.append(imageID[i])
         
-    return k_image
+    return k_image, dist
 
 def photo_list(request):
     photos = Photo.objects.all()   
@@ -57,16 +58,16 @@ def photo_list(request):
             image = img.file.path
           
             #Query the image
-            result = retrieval_k(image, 10)
+            result, scores = retrieval_k(image, 10)
             print('result =', result)
-            
+            print('scores =', scores)
             if(result == None):                       
                 messages.info(request, 'Image is too small!')
             else:               
                 result_photos = ResultPhoto.objects.all()
                 print(ResultPhoto.objects.all().count())
-                for i in result:
-                    r = ResultPhoto(index=i)
+                for i in range(len(result)):
+                    r = ResultPhoto(index=result[i], score=scores[i])
                     r.save()               
                       
             return render(request, 'album/result_photo_list.html', {'form': form, 'photos': photos, 'result_photos': result_photos})
