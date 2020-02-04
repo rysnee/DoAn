@@ -121,8 +121,33 @@ source activate openCV-Python
 conda install -c menpo opencv3=3.1.0
 ```
 
-## Contributor
-jorge.jorjasso@gmail.com
+## Evaluate
+
+Use the ground truth of Oxford Building Dataset to compute mAP
+
+```python
+python query-eval.py  -gt gt_files_170407 -r 25 -d ORB -dV visualDictionary/visualDictionary2ORB.pickle -i ballTreeIndexes/index_ORB_W2.pickle
+python evaluate.py
+```
+
+## Another method
+
+# BoW
+
+```python
+python visualWords.py -d dataset/ -dV visualDictionary/visualDictionary2ORB.pickle -n ORB -o visualWords/visualWord2
+```
+
+# K-d Tree
+
+```python KDTree_query.py
+```
+
+# Faiss
+
+```python Faiss_query.py
+```
+
 
 
 

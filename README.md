@@ -32,3 +32,10 @@ On your browser, go to:
 ```bash
 127.0.0.1:8000
 ```
+
+## Evaluate
+Follow guide in README.md at:
+
+```bash
+CBIR/VLADdata/
+```
